@@ -30,6 +30,7 @@ The model is optimized for efficient inference using vLLM.
 
 ## Pipeline
 
+```text
 Raw Clinical Text (TSV)
         ↓
 Prompt Parsing ([INST] format)
@@ -41,11 +42,13 @@ Batch JSON Outputs
 Merge Outputs
         ↓
 BLEU / ROUGE Evaluation
+```
 
 ---
 
 ## Project Structure
 
+```text
 exaone-hf-inference-eval/
 ├── README.md
 ├── requirements.txt
@@ -66,6 +69,7 @@ exaone-hf-inference-eval/
 │   └── evaluate_outputs.py
 └── outputs/
     └── .gitkeep
+```
 
 ---
 
@@ -73,62 +77,78 @@ exaone-hf-inference-eval/
 
 Each row should follow:
 
+```text
 <s>[INST] input_text [/INST] output_json </s>
+```
 
 ---
 
 ## Example
 
 ### Input
+```text
 <s>[INST] F/27 DM/HTN(-/-) ... [/INST]
+```
 
 ### Output
+```json
 {
   "general_medical_history": "...",
   "recent_history": "..."
 }
+```
 
 ---
 
 ## Installation
 
+```bash
 pip install -r requirements.txt
 cp .env.example .env
+```
 
 ---
 
 ## Environment Variables
 
+```bash
 HF_TOKEN=your_huggingface_token_here
+```
 
 ---
 
-## ▶Run Inference
+## ▶ Run Inference
 
-python scripts/run_inference.py \
+```bash
+PYTHONPATH=. python scripts/run_inference.py \
   --config configs/exaone_awq.yaml \
   --input_path data/test_data \
   --output_dir outputs/exaone_awq \
   --input_mode directory \
   --batch_size 50
+```
 
 ---
 
 ## Merge Outputs
 
+```bash
 python scripts/merge_outputs.py \
   --input_dir outputs/exaone_awq \
   --output_file outputs/exaone_awq_merged.json \
   --output_key results
+```
 
 ---
 
 ## Evaluate Outputs
 
+```bash
 python scripts/evaluate_outputs.py \
   --label_input_path data/test_data \
   --generated_json outputs/exaone_awq_merged.json \
   --label_input_mode directory
+```
 
 ---
 
@@ -141,6 +161,7 @@ python scripts/evaluate_outputs.py \
 
 ## Output Format
 
+```json
 {
   "index": "sample_001.txt",
   "data": {
@@ -149,6 +170,7 @@ python scripts/evaluate_outputs.py \
   },
   "error_sample": null
 }
+```
 
 ---
 
@@ -157,5 +179,3 @@ python scripts/evaluate_outputs.py \
 - Training data is not included.
 - This repo focuses on inference and evaluation.
 - Clinical data should be handled securely.
-
----
