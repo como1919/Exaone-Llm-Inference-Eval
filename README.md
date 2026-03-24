@@ -16,10 +16,10 @@ This project includes:
 ---
 
 ## Model
-This project uses a fine-tuned EXAONE 3.5 7.8B model that was quantized using AWQ in a separate training pipeline.
-This project uses a fine-tuned and quantized version of:
 
-- **Model**: Exaone 3.5 7.8B (Instruct)
+This project uses a fine-tuned EXAONE 3.5 7.8B model that was quantized using AWQ in a separate training pipeline.
+
+- **Model**: EXAONE 3.5 7.8B (Instruct)
 - **Quantization**: 4-bit AWQ
 - **Architecture**: Custom ExaoneForCausalLM
 - **Context Length**: up to 32K tokens
