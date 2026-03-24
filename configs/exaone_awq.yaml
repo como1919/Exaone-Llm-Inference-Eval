@@ -1,0 +1,20 @@
+model:
+  model_id: "cococoomo/Exaone3.5-7.8B_ReST_V0_Quantized"
+  quantization: "AWQ"
+  gpu_memory_utilization: 0.9
+  max_model_len: 4000
+
+generation:
+  max_tokens: 4000
+  temperature: 0.2
+  top_p: 0.8
+  stop:
+    - "\n[|assistant|]"
+
+data:
+  input_type: "tsv"
+  text_column: "data"
+  file_name_column: "file_name"
+
+output:
+  output_key: "results"

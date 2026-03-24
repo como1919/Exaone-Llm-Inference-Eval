@@ -1,0 +1,8 @@
+vllm
+transformers
+pandas
+pyyaml
+python-dotenv
+nltk
+rouge
+tqdm

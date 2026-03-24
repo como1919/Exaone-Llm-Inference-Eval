@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+
+# Env
+.env
+
+# Outputs
+outputs/
+*.json
+
+# OS
+.DS_Store
+
+# Notebook
+.ipynb_checkpoints/
